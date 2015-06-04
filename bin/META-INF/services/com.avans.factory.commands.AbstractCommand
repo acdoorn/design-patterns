@@ -1,0 +1,3 @@
+com.avans.factory.commands.impl.ExampleCommand
+com.avans.factory.commands.impl.ConstructCommand
+com.avans.factory.commands.impl.UnknownCommand
