@@ -4,6 +4,11 @@
 
 package com.avans.factory;
 
+import java.lang.reflect.Array;
+import java.util.HashMap;
+
+import models.nodeModel;
+
 import com.avans.factory.commands.AbstractCommand;
 
 public class Application {
@@ -15,13 +20,20 @@ public class Application {
 	public Application() {
 		try
 		{
+			int input = 5;
+			//final Node exampleNode = NodeFactory.create("ExampleNode");
 			final AbstractCommand exampleCommand = Factory.create("ExampleCommand");		
-			exampleCommand.action();
+			input = exampleCommand.action(input);
+							
+			nodeModel[] nodeArray;
 
-			final AbstractCommand constructCommand = Factory.create("ConstructCommand");		
-			constructCommand.action();
 		
 			final AbstractCommand unknownCommand = Factory.create("UnknownCommand");
+			input = unknownCommand.action(input);
+			
+			
+			final AbstractCommand constructCommand = Factory.create("ConstructCommand");		
+			constructCommand.action(input);
 		}
 		catch ( IllegalArgumentException exception )
 		{

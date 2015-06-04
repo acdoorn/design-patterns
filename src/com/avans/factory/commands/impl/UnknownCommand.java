@@ -11,9 +11,10 @@ public class UnknownCommand implements AbstractCommand {
 	public UnknownCommand() {
 	}
 	
-	public void action() {
-		System.out.println(getClass().getName() + " executing action");
+	public int action(int input) {
+		System.out.println(getClass().getName() + " executing action " + input);
 		System.out.println();
+		return input-1;
 	}
 
 	public AbstractCommand copy() {

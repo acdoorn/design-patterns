@@ -11,9 +11,10 @@ public class ConstructCommand implements AbstractCommand {
 	public ConstructCommand() {
 	}
 	
-	public void action() {
-		System.out.println(getClass().getName() + " executing action");
+	public int action(int input) {
+		System.out.println(getClass().getName() + " executing action " + input);
 		System.out.println();
+		return input;
 	}
 
 	public AbstractCommand copy() {

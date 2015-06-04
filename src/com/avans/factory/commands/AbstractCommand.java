@@ -6,7 +6,7 @@ package com.avans.factory.commands;
 
 public interface AbstractCommand extends Cloneable {
 	
-	void action();
+	int action(int input);
 	
 	AbstractCommand copy();
 	
