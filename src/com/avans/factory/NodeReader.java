@@ -36,7 +36,6 @@ public class NodeReader {
 		
 		
 		
-		secondArray = new String[100];
 		String[] firstPart = splitOnHashtag(thirdArray[0]);
 		String[] secondPart = splitOnHashtag(thirdArray[1]);
 		System.out.println(addAllToString(firstPart));
@@ -45,6 +44,7 @@ public class NodeReader {
 	
 	public String[] splitOnHashtag(String s) {
 		stringArray = s.split("\n");
+		secondArray = new String[100];
 		int y = 0;
 		for(int x=0; x<stringArray.length; x++) {
 			if(!stringArray[x].startsWith("#")) {
@@ -53,6 +53,10 @@ public class NodeReader {
 			}
 		}
 		return secondArray;
+	}
+	
+	public void nodeEditor(String[] sArray ) {
+		
 	}
 	
 	public String addAllToString(String[] sArray) {
