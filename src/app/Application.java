@@ -3,7 +3,7 @@ package app;
 import controllers.MainController;
 
 public class Application {
-	private String path = "./src/readablefiles/circuit4.txt";
+	private String path = "./src/readablefiles/circuit1.txt";
 	private int high = 1;
 	private int low = 1;
 	
@@ -14,8 +14,8 @@ public class Application {
 	public Application() {
 		try
 		{			
-			MainController m = new MainController(path);
-			m.generate();
+			MainController m = new MainController();
+			m.generate(path);
 			m.execute(high,low);
 			System.out.println("Done...bye");
 		}

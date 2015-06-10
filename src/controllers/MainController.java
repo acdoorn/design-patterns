@@ -10,15 +10,15 @@ public class MainController {
 	private NodeReader reader;
 	private HashMap<String, INode> circuit;
 	
-	public MainController(String path) {
+	public MainController() {
 		this.reader = new NodeReader();
 		this.circuit = new HashMap<String, INode>();
-		reader.readFile(path);
 	}
 	
-	public void generate() {			
-		callFactory(reader.getNodes(), true);
-		callFactory(reader.getEdges(), false);
+	public void generate(String path) {	
+		reader.readFile(path);		
+		generateNodes(reader.getNodes(), true);
+		generateNodes(reader.getEdges(), false);
 	}
 	
 	public void execute(int INPUT_HIGH, int INPUT_LOW) {
@@ -30,7 +30,7 @@ public class MainController {
 		}
 	}
 	
-	private void callFactory(String[] stringArray, boolean isFirstPart ) {
+	private void generateNodes(String[] stringArray, boolean isFirstPart ) {
 		for(int x=0; x < stringArray.length; x++) {
 			if(stringArray[x] != null) {
 				if(isFirstPart) {			
