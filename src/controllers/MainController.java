@@ -1,54 +1,64 @@
 package controllers;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import models.INode;
 import factory.NodeFactory;
 
 public class MainController {
 	private NodeReader reader;
-	private NodeFactory factory = new NodeFactory();
-	private String path = "./src/readablefiles/circuit1.txt";
-	//private Array[] circuit;
+	private HashMap<String, INode> circuit;
 	
-	//Constructor
-	public MainController() {
+	public MainController(String path) {
 		this.reader = new NodeReader();
+		this.circuit = new HashMap<String, INode>();
 		reader.readFile(path);
 	}
 	
-
-	
-	public void generate() {
-		String[] nodes = reader.getNodes();
-		String[] edges = reader.getEdges();
-		
-		for(int i = 0; i < nodes.length; i++){
-			if(nodes[i] != null) {
-				System.out.println(nodes[i]);
-			} 
-		}
-		
-		for(int i = 0; i < edges.length; i++) {
-			if(edges[i] != null) {
-				System.out.println(edges[i]);
-			}
-		}
-		
-		
+	public void generate() {			
 		callFactory(reader.getNodes(), true);
 		callFactory(reader.getEdges(), false);
 	}
 	
-	public void execute() {
-		
-	}
-	
-	private void callFactory(String[] sArray, boolean isFirstPart ) {
-		for(int x=0; x < sArray.length; x++) {
-			if(sArray[x] != null && isFirstPart) {
-				//TODO 
-			}
-			if(sArray[x] != null && !isFirstPart) {
-				//TODO
+	public void execute(int INPUT_HIGH, int INPUT_LOW) {
+		for (Entry<String, INode> entry : circuit.entrySet()) {
+			String compValue = entry.getValue().getClass().getSimpleName().toString();
+			if(compValue.contains("INPUT")){
+				entry.getValue().Next(compValue.equals("INPUT_HIGH") ? INPUT_HIGH : INPUT_LOW );
 			}
 		}
 	}
+	
+	private void callFactory(String[] stringArray, boolean isFirstPart ) {
+		for(int x=0; x < stringArray.length; x++) {
+			if(stringArray[x] != null) {
+				if(isFirstPart) {			
+		    		String nodeName = stringArray[x].substring(0,stringArray[x].indexOf(":"));
+			    	String nodeValue = stringArray[x].substring(stringArray[x].indexOf(":")+1,stringArray[x].indexOf(";"));
+			    	nodeValue = nodeValue.replaceAll("\\s+","");	
+					circuit.put(nodeName, NodeFactory.create(nodeValue));
+				} 
+				else {
+					if(!stringArray[x].equals("")) {
+			    		String nodeName = stringArray[x].substring(0,stringArray[x].indexOf(":"));
+				    	String nodeValue = stringArray[x].substring(stringArray[x].indexOf(":")+1,stringArray[x].indexOf(";"));
+				    	nodeValue = nodeValue.replaceAll("\\s+","");
+						
+				    	// If multiple edges then split
+						if(nodeValue.contains(",")) {
+			    			String[] split = nodeValue.split(",");
+			    			for (int i = 0; i < split.length; i++) {
+			    				circuit.get(nodeName).AddNodeToList(circuit.get(split[i]));
+			    			}
+			    		} else {
+		    				circuit.get(nodeName).AddNodeToList(circuit.get(nodeValue));
+			    		}
+					}
+				}
+			}
+		}
+	}
+	
+	
 }

@@ -36,8 +36,6 @@ public class NodeReader {
 		
 		this.nodes = splitOnHashtag(splitArray[0]);
 		this.edges = splitOnHashtag(splitArray[1]);
-		//System.out.println(addAllToString(nodes));
-		//System.out.println(addAllToString(edges));
 	}
 	
 	public String[] getNodes() {
@@ -50,7 +48,7 @@ public class NodeReader {
 	
 	private String[] splitOnHashtag(String s) {
 		stringArray = s.split("\n");
-		String[] returnArray = new String[100];
+		String[] returnArray = new String[1002];
 		int y = 0;
 		for(int x=0; x<stringArray.length; x++) {
 			if(!stringArray[x].startsWith("#")) {
@@ -61,8 +59,8 @@ public class NodeReader {
 		return returnArray;
 	}
 	
+	// For output testing
 	private String addAllToString(String[] sArray) {
-		//for output
 		s ="";
 		for(int x=0; x<sArray.length; x++) {
 			if(sArray[x] != null) {

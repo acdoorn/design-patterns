@@ -4,9 +4,10 @@ import models.INode;
 import models.Node;
 
 
+
 public class AND extends Node {
 	
-	private Integer _inputA, _inputB;
+	private Integer input1, input2;
 	
 	public AND(){
 		super();
@@ -14,15 +15,15 @@ public class AND extends Node {
 
 	@Override
 	protected Integer Execute(int input) {
-		if(_inputA == null){
-			_inputA= input;
+		if(input1 == null){
+			input1= input;
 		}
-		else if(_inputB==null){
-			_inputB= input;
+		else if(input2==null){
+			input2= input;
 		}
-		if(_inputA != null && _inputB != null){
+		if(input1 != null && input2 != null){
 			
-				return (_inputA == 1 && _inputB == 1 ? 1 : 0);
+				return (input1 == 1 && input2 == 1 ? 1 : 0);
 		}
 		else{
 			return null;

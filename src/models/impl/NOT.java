@@ -3,6 +3,7 @@ package models.impl;
 import models.INode;
 import models.Node;
 
+
 public class NOT extends Node {
 	
 	public NOT(){

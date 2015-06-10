@@ -3,8 +3,8 @@ package models.impl;
 import models.INode;
 import models.Node;
 
+
 public class PROBE extends Node {
-	private Integer _inputA;
 
 	public PROBE(){
 		super();
@@ -12,7 +12,7 @@ public class PROBE extends Node {
 
 	@Override
 	protected Integer Execute(int input) {
-		_inputA = input;
+		System.out.println("Output = "+ input);
 		return null;
 	}
 	

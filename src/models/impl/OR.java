@@ -3,23 +3,24 @@ package models.impl;
 import models.INode;
 import models.Node;
 
+
 public class OR extends Node {
 	
-	private Integer _inputA, _inputB;
+	private Integer input1, input2;
 	
 	public OR(){
 		super();
 	}
 	
 	protected Integer Execute(int input){
-		if(_inputA == null){
-			_inputA= input;
+		if(input1 == null){
+			input1= input;
 		}
-		else if(_inputB==null){
-			_inputB= input;
+		else if(input2==null){
+			input2= input;
 		}
-		if(_inputA != null && _inputB != null){
-			return _inputA == 1 || _inputB == 1 ? 1 : 0;
+		if(input1 != null && input2 != null){
+			return input1 == 1 || input2 == 1 ? 1 : 0;
 		} else{
 			return null;
 		}

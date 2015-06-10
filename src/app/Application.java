@@ -1,15 +1,11 @@
-/*
- * met dank aan Mark van Velthoven
- */
-
 package app;
-
-import java.lang.reflect.Array;
-import java.util.HashMap;
 
 import controllers.MainController;
 
 public class Application {
+	private String path = "./src/readablefiles/circuit4.txt";
+	private int high = 1;
+	private int low = 1;
 	
 	public static void main(String[] args) {
 		new Application();
@@ -17,24 +13,11 @@ public class Application {
 	
 	public Application() {
 		try
-		{
-			int input = 5;
-			//final Node exampleNode = NodeFactory.create("ExampleNode");
-//			final AbstractCommand exampleCommand = Factory.create("ExampleCommand");		
-//			input = exampleCommand.action(input);
-							
-			
-			MainController m = new MainController();
+		{			
+			MainController m = new MainController(path);
 			m.generate();
-			m.execute();
-
-		
-//			final AbstractCommand unknownCommand = Factory.create("UnknownCommand");
-//			input = unknownCommand.action(input);
-			
-			
-//			final AbstractCommand constructCommand = Factory.create("ConstructCommand");		
-//			constructCommand.action(input);
+			m.execute(high,low);
+			System.out.println("Done...bye");
 		}
 		catch ( IllegalArgumentException exception )
 		{
