@@ -17,7 +17,7 @@ public class NodeReader {
 	
 	public void test() {
 		try {
-			reader  =  new FileReader("C:/Users/Ruud van Daelen/Downloads/circuits/circuit1.txt");
+			reader  =  new FileReader("./src/readablefiles/circuit1.txt");
 			int data = reader.read();
 			
 			while(data != -1) {
@@ -33,8 +33,6 @@ public class NodeReader {
 		}
 		
 		thirdArray = s.split("\n\r");
-//		System.out.println(thirdArray[0]);
-//		System.out.println(thirdArray[1]);
 		
 		
 		
@@ -42,8 +40,7 @@ public class NodeReader {
 		String[] firstPart = splitOnHashtag(thirdArray[0]);
 		String[] secondPart = splitOnHashtag(thirdArray[1]);
 		System.out.println(addAllToString(firstPart));
-//		System.out.println("Deel 2");
-//		System.out.println(fnalArray[1]);
+		System.out.println(addAllToString(secondPart));
 	}
 	
 	public String[] splitOnHashtag(String s) {
@@ -55,14 +52,14 @@ public class NodeReader {
 				y++;
 			}
 		}
-		return stringArray;
+		return secondArray;
 	}
 	
 	public String addAllToString(String[] sArray) {
 		s ="";
 		for(int x=0; x<sArray.length; x++) {
 			if(sArray[x] != null)
-			s = s + sArray[x];
+				s = s + sArray[x];
 		}
 		return s;
 	}
