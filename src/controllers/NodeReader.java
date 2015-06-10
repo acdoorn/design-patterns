@@ -1,4 +1,4 @@
-package com.avans.factory;
+package controllers;
 
 import java.io.FileReader;
 import java.io.IOException;

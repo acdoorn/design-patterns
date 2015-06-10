@@ -1,4 +1,6 @@
-package com.avans.factory;
+package controllers;
+
+import factory.NodeFactory;
 
 public class MainController {
 	private NodeReader reader;
