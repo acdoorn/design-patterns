@@ -36,8 +36,8 @@ public class NodeReader {
 		
 		this.nodes = splitOnHashtag(splitArray[0]);
 		this.edges = splitOnHashtag(splitArray[1]);
-		System.out.println(addAllToString(nodes));
-		System.out.println(addAllToString(edges));
+		//System.out.println(addAllToString(nodes));
+		//System.out.println(addAllToString(edges));
 	}
 	
 	public String[] getNodes() {

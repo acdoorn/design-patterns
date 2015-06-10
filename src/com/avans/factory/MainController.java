@@ -15,6 +15,22 @@ public class MainController {
 
 	
 	public void generate() {
+		String[] nodes = reader.getNodes();
+		String[] edges = reader.getEdges();
+		
+		for(int i = 0; i < nodes.length; i++){
+			if(nodes[i] != null) {
+				System.out.println(nodes[i]);
+			} 
+		}
+		
+		for(int i = 0; i < edges.length; i++) {
+			if(edges[i] != null) {
+				System.out.println(edges[i]);
+			}
+		}
+		
+		
 		callFactory(reader.getNodes(), true);
 		callFactory(reader.getEdges(), false);
 	}
@@ -24,7 +40,7 @@ public class MainController {
 	}
 	
 	private void callFactory(String[] sArray, boolean isFirstPart ) {
-		for(int x=0; x<sArray.length; x++) {
+		for(int x=0; x < sArray.length; x++) {
 			if(sArray[x] != null && isFirstPart) {
 				//TODO 
 			}
