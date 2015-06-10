@@ -8,12 +8,12 @@ public class NodeFactory {
 	}
 	
 	//Methods
-	public Node createNode(String nodeName, String portType) {
-		
-	}
-	
-	public Node addEdge(String nodeName, String edgeName) {
-		
-	}
-	
+//	public Node createNode(String nodeName, String portType) {
+//		
+//	}
+//	
+//	public Node addEdge(String nodeName, String edgeName) {
+//		
+//	}
+//	
 }

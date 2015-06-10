@@ -23,7 +23,9 @@ public class Application {
 //			input = exampleCommand.action(input);
 							
 			
-			NodeReader g = new NodeReader();
+			MainController m = new MainController();
+			m.generate();
+			m.execute();
 
 		
 //			final AbstractCommand unknownCommand = Factory.create("UnknownCommand");

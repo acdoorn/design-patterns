@@ -5,65 +5,69 @@ import java.io.IOException;
 import java.io.Reader;
 
 public class NodeReader {
-	Reader reader;
-	String s = "";
-	String[] stringArray;
-	String[] secondArray;
-	String[] thirdArray;
+	private Reader reader;
+	private String s = "";
+	private String[] stringArray;
+	private String[] nodes;
+	private String[] edges;
 	
 	public NodeReader() {
-		test();
 	}
 	
-	public void test() {
+	public void readFile(String path) {
 		try {
-			reader  =  new FileReader("./src/readablefiles/circuit1.txt");
+			this.reader  =  new FileReader(path);
 			int data = reader.read();
 			
 			while(data != -1) {
 			  //do something with data...
 			  char dataChar = (char) data;
-			  data = reader.read();
+			  data = this.reader.read();
 			  s = s + dataChar;
 			}
-			reader.close();
+			this.reader.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		thirdArray = s.split("\n\r");
+
+		String[] splitArray = s.split("\n\r");		
 		
-		
-		
-		String[] firstPart = splitOnHashtag(thirdArray[0]);
-		String[] secondPart = splitOnHashtag(thirdArray[1]);
-		System.out.println(addAllToString(firstPart));
-		System.out.println(addAllToString(secondPart));
+		this.nodes = splitOnHashtag(splitArray[0]);
+		this.edges = splitOnHashtag(splitArray[1]);
+		System.out.println(addAllToString(nodes));
+		System.out.println(addAllToString(edges));
 	}
 	
-	public String[] splitOnHashtag(String s) {
+	public String[] getNodes() {
+		return nodes;
+	}
+	
+	public String[] getEdges() {
+		return edges;
+	}
+	
+	private String[] splitOnHashtag(String s) {
 		stringArray = s.split("\n");
-		secondArray = new String[100];
+		String[] returnArray = new String[100];
 		int y = 0;
 		for(int x=0; x<stringArray.length; x++) {
 			if(!stringArray[x].startsWith("#")) {
-				secondArray[y] = stringArray[x];
+				returnArray[y] = stringArray[x];
 				y++;
 			}
 		}
-		return secondArray;
+		return returnArray;
 	}
 	
-	public void nodeEditor(String[] sArray ) {
-		
-	}
-	
-	public String addAllToString(String[] sArray) {
+	private String addAllToString(String[] sArray) {
+		//for output
 		s ="";
 		for(int x=0; x<sArray.length; x++) {
-			if(sArray[x] != null)
+			if(sArray[x] != null) {
 				s = s + sArray[x];
+			}
 		}
 		return s;
 	}
