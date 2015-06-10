@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
-import com.avans.factory.NodeReader;
+import controllers.NodeReader;
 
 abstract public class Node implements INode{
 	public ArrayList<INode> _nextNodeList;
@@ -28,7 +28,7 @@ abstract public class Node implements INode{
 	}
 
 	
-	public void setCircuit(NodeReader nodeReader){
+	public void setNodeReader(NodeReader nodeReader){
 		this._nodeReader = nodeReader;
 	}
 	

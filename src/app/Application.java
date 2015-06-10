@@ -2,11 +2,12 @@
  * met dank aan Mark van Velthoven
  */
 
-package com.avans.factory;
+package app;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
-import com.avans.factory.commands.AbstractCommand;
+
+import controllers.MainController;
 
 public class Application {
 	
